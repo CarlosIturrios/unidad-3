@@ -1,0 +1,15 @@
+Create database biblioteca;
+use biblioteca;
+CREATE TABLE `libro` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `created_at` datetime DEFAULT NULL, //Convencion de la libreria gorm
+  `updated_at` datetime DEFAULT NULL, //Convencion de la libreria gorm
+  `deleted_at` datetime DEFAULT NULL, //Convencion de la libreria gorm
+  `nombre` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `descripcion` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `autor` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `editorial` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `fecha_publicacion` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_libro_deleted_at` (`deleted_at`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
