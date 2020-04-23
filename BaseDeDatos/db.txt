@@ -1,3 +1,4 @@
+//Autor: Carlos Armando Iturrios Alcaraz ITIC 10-1
 Create database biblioteca;
 use biblioteca;
 CREATE TABLE `libro` (

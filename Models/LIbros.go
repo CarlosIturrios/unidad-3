@@ -1,3 +1,4 @@
+//Autor: Carlos Armando Iturrios Alcaraz ITIC 10-1
 package Models
 
 import (
@@ -5,6 +6,8 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	"unidad-3/BaseDeDatos"
 )
+
+//Clases para trabajar con la base de datos mediante el ORM
 
 func InsertarNuevoLibro(libro *Libro) (err error) {
 	if err = BaseDeDatos.DB.Create(libro).Error; err != nil {

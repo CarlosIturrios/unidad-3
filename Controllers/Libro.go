@@ -1,3 +1,5 @@
+//Autor: Carlos Armando Iturrios Alcaraz ITIC 10-1
+
 package Controllers
 
 import (
@@ -6,6 +8,7 @@ import (
 	"unidad-3/Models"
 )
 
+//Clase para realizar un nuevo libro en la base de datos
 func InsertarNuevoLibro(c *gin.Context) {
 	var libro Models.Libro
 	c.BindJSON(&libro)
@@ -17,14 +20,16 @@ func InsertarNuevoLibro(c *gin.Context) {
 	}
 }
 
+//Clase para actualizar un libro guardado en la base de datos
 func ActualizarLibro(c *gin.Context) {
 	var libro Models.Libro
 	id := c.Params.ByName("id")
 	err := Models.ObtenerLibroPorID(&libro, id)
 
+	//Validacion para regresar un mensaje de no encontrado en caso de que el ID no exista en la base de datos
 	if err != nil {
 		ApiHelpers.RespondJSON(c, 404, "Libro no encontrado")
-	} else{
+	} else {
 		c.BindJSON(&libro)
 		err = Models.ActualizarLibro(&libro, id)
 		if err != nil {
@@ -36,6 +41,7 @@ func ActualizarLibro(c *gin.Context) {
 
 }
 
+//Clase para obtener todos los libros de la base de datos
 func ListarLibro(c *gin.Context) {
 	var libro []Models.Libro
 	err := Models.ListarLibro(&libro)
@@ -46,6 +52,7 @@ func ListarLibro(c *gin.Context) {
 	}
 }
 
+//Clase para obtener un libro por su ID
 func ObtenerLibroPorID(c *gin.Context) {
 	id := c.Params.ByName("id")
 	var libro Models.Libro
@@ -57,6 +64,7 @@ func ObtenerLibroPorID(c *gin.Context) {
 	}
 }
 
+//Clase para borrar el registro de un libro
 func BorrarLibro(c *gin.Context) {
 	var libro Models.Libro
 	id := c.Params.ByName("id")
